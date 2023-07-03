@@ -24,6 +24,7 @@
  *
  */
 function getComposition(f, g) {
+  // eslint-disable-next-line func-names
   return function (x) {
     return f(g(x));
   };
@@ -47,6 +48,7 @@ function getComposition(f, g) {
  *
  */
 function getPowerFunction(exponent) {
+  // eslint-disable-next-line func-names
   return function (x) {
     return x ** exponent;
   };
@@ -70,6 +72,7 @@ function getPolynom(...coefficients) {
   if (coefficients.length === 0) {
     return null;
   }
+  // eslint-disable-next-line func-names
   return function (x) {
     let result = 0;
     for (let i = 0; i < coefficients.length; i += 1) {
@@ -96,6 +99,7 @@ function getPolynom(...coefficients) {
  */
 function memoize(func) {
   const cache = {};
+  // eslint-disable-next-line func-names
   return function () {
     const key = JSON.stringify(func);
     if (cache[key]) {
@@ -163,6 +167,7 @@ function retry(func, attempts) {
  *
  */
 function logger(func, logFunc) {
+  // eslint-disable-next-line func-names
   return function (...args) {
     const { name } = func;
     const argsStr = JSON.stringify(args).slice(1, -1);
@@ -188,6 +193,7 @@ function logger(func, logFunc) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn, ...args1) {
+  // eslint-disable-next-line func-names
   return function (...args2) {
     return fn.apply(this, args1.concat(args2));
   };
@@ -213,6 +219,7 @@ function partialUsingArguments(fn, ...args1) {
  */
 function getIdGeneratorFunction(startFrom) {
   let nextId = startFrom;
+  // eslint-disable-next-line func-names
   return function () {
     // eslint-disable-next-line no-plusplus
     return nextId++;
